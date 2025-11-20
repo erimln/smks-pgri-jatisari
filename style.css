@@ -1,0 +1,656 @@
+/* ====================================
+   1. RESET DAN FONT DASAR
+   ==================================== */
+body {
+    /* Ganti font ke yang lebih modern dan clean */
+    font-family: 'Roboto', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f7f7f7;
+    color: #333;
+    line-height: 1.6;
+    scroll-behavior: smooth; /* Smooth scrolling untuk One-Page */
+}
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+h1, h2, h3, h4 {
+    color: #1a1a1a;
+    font-weight: 700;
+}
+section:not(#hero) {
+    scroll-margin-top: 70px; /* Offset untuk header sticky */
+    padding-top: 50px; /* Tambahkan padding agar tidak terlalu mepet */
+    padding-bottom: 50px;
+}
+.section-divider {
+    border: 0;
+    height: 1px;
+    /* Gradient Merah di tengah */
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(192, 0, 0, 0.75), rgba(0, 0, 0, 0));
+    margin: 40px auto;
+    width: 80%;
+}
+/* Styling umum untuk judul section */
+.section-title {
+    text-align: center;
+    font-size: 2.5em;
+    margin-bottom: 40px;
+    position: relative;
+    color: #C00000;
+}
+.section-title::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 4px;
+    background-color: #FFC107;
+    margin: 10px auto 0;
+    border-radius: 2px;
+}
+
+
+/* ====================================
+   2. HEADER DAN NAVIGASI (Sticky & Aksen)
+   ==================================== */
+header {
+    background-color: #C00000; /* Merah PGRI */
+    color: white;
+    padding: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Shadow yang lebih kuat */
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+header .logo {
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
+}
+header .logo img { /* Tambahan: Styling untuk logo jika ada */
+    height: 40px; 
+    margin-right: 10px;
+}
+header h1 {
+    color: white;
+    font-size: 1.4em; /* Sedikit lebih kecil agar lebih elegan */
+    margin: 0;
+    font-weight: 900;
+    letter-spacing: 1px;
+}
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 15px 18px;
+    transition: background-color 0.3s, color 0.3s;
+    font-weight: 500;
+    display: block; /* Penting untuk responsivitas */
+}
+nav a:hover, nav a.active { /* Tambahan: Kelas .active untuk penanda halaman/section aktif */
+    background-color: #FFC107; /* Kuning Aksen saat hover */
+    color: #C00000;
+}
+.btn-ppdb {
+    background-color: #007BFF; /* Biru Aksen */
+    border-radius: 5px;
+    margin-left: 15px;
+    font-weight: bold;
+    padding: 10px 18px; /* Padding lebih kecil agar menonjol */
+}
+.btn-ppdb:hover {
+    background-color: #0056b3;
+    color: white;
+}
+/* Tombol Hamburger untuk mobile */
+.menu-toggle {
+    display: none; /*Sembunyikan di desktop */
+    cursor: pointer;
+    position: absolute;
+    margin-right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1001;
+   
+}
+.menu-toggle .bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    background-color: white;
+    transition: all 0.3sease-in-out;
+border-radius: 2px;
+}
+
+
+/* ====================================
+   3. SECTION HERO (Cover Image & Overlay)
+   ==================================== */
+#hero {
+    text-align: center;
+    padding: 120px 20px; /* Padding lebih besar untuk kesan grand */
+    /* Ganti 'banner-workshop.jpg' dengan file Anda */
+    background: linear-gradient(rgba(192, 0, 0, 0.7), rgba(0, 0, 0, 0.6)), url('assets/images/banner-workshop.jpg') no-repeat center center/cover;
+    color: white;
+    min-height: 50vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#hero h2 {
+    font-size: 3.5em;
+    margin-bottom: 5px;
+    color: white;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+#hero p {
+    font-size: 1.3em;
+    margin-bottom: 30px;
+}
+.cta-button {
+    background-color: #FFC107; /* Kuning Cerah */
+    color: #C00000; /* Kontras Merah */
+    padding: 15px 35px; /* Tombol besar */
+    font-size: 1.1em;
+    border-radius: 50px; /* Bentuk pil */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+.cta-button:hover {
+    background-color: #e0a800;
+}
+
+/* --- Tambahan: Card Statistik (Data Counter) --- */
+.stats-grid {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+    padding: 40px 0;
+    background-color: #fff; /* Latar belakang berbeda */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+}
+.stat-item {
+    text-align: center;
+    flex-basis: 25%;
+    padding: 10px;
+}
+.stat-item .number {
+    font-size: 3em;
+    font-weight: 900;
+    color: #C00000;
+}
+.stat-item .label {
+    font-size: 1em;
+    font-weight: 500;
+    color: #333;
+    margin-top: 5px;
+}
+
+
+/* ====================================
+   4. STYLING PROFIL (DETAIL)
+   ==================================== */
+
+/* Sambutan Kepala Sekolah */
+.sambutan-section {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    margin-bottom: 40px;
+}
+.sambutan-foto {
+    flex-shrink: 0; /* Mencegah gambar menyusut */
+}
+.sambutan-foto img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 50%; 
+    border: 7px solid #FFC107; /* Border yang lebih tebal */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+.sambutan-text h3 {
+    color: #C00000;
+    font-size: 2em;
+    border-bottom: 3px solid #FFC107;
+    padding-bottom: 10px;
+    display: inline-block;
+}
+
+/* Visi Misi Section */
+.visi-misi-section {
+    padding: 30px;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+}
+.visi-misi-section .container {
+    display: flex;
+    gap: 30px;
+    padding: 0;
+}
+.visi-box, .misi-box {
+    flex: 1;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #fcfcfc;
+    border: 1px solid #eee;
+}
+.misi-box ul { /* Tambahan: memastikan list di misi tidak ada bullet default */
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.misi-box li {
+    padding: 8px 0;
+    border-bottom: 1px solid #f0f0f0;
+    display: flex;
+    align-items: flex-start; /* Ubah agar icon sejajar dengan awal teks */
+}
+.misi-box li:last-child {
+    border-bottom: none;
+}
+.misi-box li::before {
+    content: "✅"; 
+    margin-right: 10px;
+    font-size: 1.1em;
+    line-height: 1.6;
+}
+
+
+/* ====================================
+   5. JURUSAN (Kartu Bersebelahan)
+   ==================================== */
+#jurusan-container { /* Kontainer baru untuk grid */
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: center;
+    gap: 30px; /* Jarak antar card */
+}
+#jurusan .jurusan-box {
+    display: flex; /* Menggunakan Flexbox untuk mensejajarkan konten dan foto /* Menyelaraskan item secara vertikal di tengah */
+    gap: 30px; /* jarak antar konten dan foto */
+    margin-bottom: 40px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+.jurusan-konten {
+    flex-shrink: 1; /* konten mengambil sisa ruang */
+}
+.jurusan-foto {
+    flex-shrink: 0; /* mencegah gambar menyusut */
+width: 40%; /* menentukan lebar foto */
+max-width: 300px; /* batas maksimum lebar foto */
+border-radius: 6px;
+overflow: hidden; /*penting untuk menjaga bentuk gambar */
+}
+
+.jurusan-foto img {
+    width: 100%; 
+    height: auto;
+    display: block;
+    object-fit: cover; /* memastikan gambar terisi penuh tanpa distorsi */
+}
+/* Untuk membuat tata letak bolak-balik (foto di kiri, teks di kanan) */
+.jurusan-reverse {
+    flex-direction: row-reverse;
+    background-color: #e3e3e3; /* Warna latar belakang berbeda untuk pemisah visual */
+}
+
+/* Responsif untuk layar kecil */
+@media (max-width: 768px) {
+    .jurusan-box {
+        flex-direction: column; /* Pada layar kecil, tumpuk konten dan foto */
+        text-align: center;
+    }
+
+    .jurusan-foto {
+        width: 100%; /* Foto mengambil lebar penuh pada layar kecil */
+        max-width: none;
+        order: -1; /* Pindahkan foto ke atas di tampilan tumpuk */
+    }
+
+    .jurusan-reverse .jurusan-foto {
+         order: -1; /* Pastikan foto tetap di atas untuk tata letak reverse juga */
+    }
+}
+
+
+
+/* ====================================
+   6. FASILITAS (Grid Modern)
+   ==================================== */
+.fasilitas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+.fasilitas-item {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s;
+    border-top: 3px solid #C00000;
+    text-align: center; /* Tambahan: Teks di tengah */
+}
+.fasilitas-item i { /* Styling untuk icon di fasilitas */
+    font-size: 3em;
+    color: #007BFF;
+    margin-bottom: 10px;
+}
+.fasilitas-item:hover {
+    transform: translateY(-5px);
+    border-top-color: #FFC107; /* Ganti warna hover */
+}
+
+
+/* ====================================
+   7. KEGIATAN SISWA (Grid Modern)
+   ==================================== */
+.kegiatan-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    margin-top: 20px;
+}
+.kegiatan-item {
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transition: box-shadow 0.3s, transform 0.3s;
+    border-right: 5px solid #007BFF;
+}
+.kegiatan-item:hover {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    transform: scale(1.01);
+}
+.kegiatan-item h4 {
+    color: #C00000;
+}
+
+
+/* ====================================
+   8. GALERI (Efek Hover)
+   ==================================== */
+.galeri-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 15px;
+    margin-top: 20px;
+}
+.galeri-item {
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    position: relative;
+    cursor: pointer;
+}
+.galeri-item img {
+    width: 100%;
+    height: 250px; 
+    object-fit: cover; 
+    transition: transform 0.4s;
+}
+.galeri-item:hover img {
+    transform: scale(1.1); 
+    opacity: 0.9;
+}
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%; 
+    height: 0;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+
+/* ====================================
+   9. FOOTER (Kontak)
+   ==================================== */
+footer {
+    background-color: #1a1a1a; 
+    color: #f7f7f7;
+    padding: 40px 0 20px; /* Padding atas lebih besar */
+    text-align: center;
+}
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    text-align: left;
+}
+.footer-info, .footer-links, .footer-sosmed {
+    flex: 1;
+    padding: 0 20px;
+}
+.footer-info h3, .footer-links h3, .footer-sosmed h3 {
+    color: #FFC107;
+    border-bottom: 2px solid #C00000;
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+    font-size: 1.2em;
+}
+.footer-info p {
+    font-size: 0.9em;
+    color: #ccc;
+    margin-bottom: 8px;
+}
+.footer-links ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.footer-links a {
+    color: #ccc;
+    text-decoration: none;
+    display: block;
+    padding: 5px 0;
+    transition: color 0.2s;
+}
+.footer-links a:hover {
+    color: #FFC107;
+}
+.sosmed-icon a { /* Tambahan: Styling Icon Sosial Media */
+    color: white;
+    font-size: 1.5em;
+    margin: 0 8px;
+    transition: color 0.3s;
+}
+.sosmed-icon a:hover {
+    color: #FFC107;
+}
+.footer-bottom {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #333;
+    font-size: 0.8em;
+    color: #888;
+}
+
+
+/* ====================================
+   10. MEDIA QUERIES (RESPONSIVE)
+   ==================================== */
+@media (max-width: 768px) {
+    /* Header/Navigasi di mode tablet */
+    header { 
+        justify-content: space-between;
+       padding: 10px 0;
+    }
+    .menu-toggle{
+        display: block; /* Tampilkan tombol hamburger */
+    }
+    /* Sembunyikan navigasi secara defaul */
+    nav#mainNav {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: #C00000;
+        position:absolute;
+        top: 60px; /* Di bawah header */
+    }
+    header .logo {
+        margin: 10px 20px;
+    }
+    nav {
+        width: 100%;
+    }
+    nav ul {
+        justify-content: center;
+        flex-wrap: wrap;
+        padding-bottom: 10px;
+    }
+    nav a {
+        padding: 10px 15px;
+    }
+    .btn-ppdb {
+        margin: 5px 10px 15px 10px;
+        align-self: center;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Menu Toggle (Hamburger) */
+    header {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 10px 0;
+    }
+    nav {
+        display: none; /* Sembunyikan navigasi di mobile */
+        flex-direction: column;
+        width: 100%;
+        background-color: #C00000;
+        position: absolute;
+        top: 60px; /* Di bawah header */
+        left: 0;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    }
+    nav.active { /* Tampilkan saat class active ditambahkan via JS */
+        display: flex;
+    }
+    nav ul {
+        flex-direction: column;
+        padding: 0;
+        margin-top: 0;
+    }
+    nav li {
+        width: 100%;
+        text-align: center;
+    }
+    nav a {
+        padding: 12px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .menu-toggle {
+        display: block;
+    }
+    .btn-ppdb {
+        margin: 10px auto 15px;
+    }
+
+    /* Perubahan Layout Utama untuk Mobile */
+    #hero {
+        padding: 80px 20px;
+        min-height: 40vh;
+    }
+    #hero h2 {
+        font-size: 2.5em;
+    }
+    .section-title {
+        font-size: 2em;
+        margin-bottom: 30px;
+    }
+    .sambutan-section {
+        flex-direction: column;
+        gap: 20px;
+    }
+    .sambutan-foto img {
+        width: 150px;
+        height: 150px;
+    }
+    .visi-misi-section .container {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    /* Jurusan menjadi 1 kolom penuh */
+    #jurusan-container {
+        gap: 20px;
+    }
+    #jurusan .jurusan-box {
+        width: 100%;
+        max-width: none;
+    }
+
+    /* Grid menjadi 1 kolom penuh di mobile */
+    .fasilitas-grid, .kegiatan-grid, .galeri-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Footer */
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    .footer-info, .footer-links, .footer-sosmed {
+        padding: 10px 0;
+    }
+    .footer-info h3, .footer-links h3, .footer-sosmed h3 {
+        text-align: center;
+    }
+    .footer-links ul {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .footer-links li {
+        margin: 0 10px;
+    }
+    .footer-links a {
+        display: inline-block;
+    }
+    .sosmed-icon {
+        margin-top: 15px;
+    }
+
+    /* Card Stats */
+    .stats-grid {
+        flex-wrap: wrap;
+        padding: 20px 0;
+    }
+    .stat-item {
+        flex-basis: 45%;
+    }
+    .stat-item .number {
+        font-size: 2.5em;
+    }
+}
